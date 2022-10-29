@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common.Result\Common.Result.csproj" />
+    <ProjectReference Include="..\Identity.Persistence.Database\Identity.Persistence.Database.csproj" />
+  </ItemGroup>
+
+</Project>

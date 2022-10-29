@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="CoreBDD" Version="1.0.0" />
+    <PackageReference Include="CSProlog" Version="6.0.0" />
+    <PackageReference Include="Mapster" Version="7.3.0" />
+    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common.Result\Common.Result.csproj" />
+    <ProjectReference Include="..\Diagnosticos.Persistence.Database\Diagnosticos.Persistence.Database.csproj" />
+  </ItemGroup>
+
+</Project>

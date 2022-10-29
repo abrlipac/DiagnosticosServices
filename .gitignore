@@ -1,0 +1,9 @@
+# Visual Studio solution files
+
+.vs/
+UpgradeLog*.*
+
+## .NET project
+
+/src/**/bin/
+/src/**/obj/
