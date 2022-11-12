@@ -192,6 +192,8 @@ namespace Diagnosticos.RequestHandlers
             var localDevPrologPath = Path.GetFullPath($"./../Diagnosticos.RequestHandlers/{filename}");
             var localTestingPrologPath = Path.GetFullPath($"./../../../../Diagnosticos.RequestHandlers/{filename}");
 
+            Logger.LogInformation($"! Cargando el archivo {productionPrologPath}");
+
             var isRunningFromProduction = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "production";
 
             var absolutePrologPath = isRunningFromProduction ? productionPrologPath
