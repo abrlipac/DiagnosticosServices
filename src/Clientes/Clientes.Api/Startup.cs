@@ -50,7 +50,7 @@ namespace Clientes.Api
 
             services.AddTransient<IPacienteQueryService, PacienteQueryService>();
 
-            // agrega el Cors para hacer peticiones HTTP desde otros orígenes
+            // agrega el Cors para hacer peticiones HTTP desde otros orï¿½genes
             services.AddCors(options =>
             {
                 options.AddPolicy(name: MyAllowSpecificOrigins,
