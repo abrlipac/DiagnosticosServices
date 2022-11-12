@@ -11,7 +11,7 @@ namespace Diagnosticos.Api.Controllers
         public string Index()
         {
             var productionPrologPath = Path.GetFullPath($"./pl/enfermedad.pl");
-            return "Diagnosticos.Api is running";
+            return productionPrologPath;
         }
     }
 }
