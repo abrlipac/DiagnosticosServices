@@ -110,7 +110,7 @@ namespace Diagnosticos.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers()
-                .RequireCors(MyAllowSpecificOrigins);
+                    .RequireCors(MyAllowSpecificOrigins);
                 endpoints.MapHealthChecks("/healthcheck", new HealthCheckOptions
                 {
                     Predicate = _ => true,

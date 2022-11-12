@@ -69,10 +69,8 @@ namespace Identity.Api.Controllers
                 var result = await Mediator.Send(request);
 
                 if (!result.Succeeded)
-                {
-                    result.Errors.Add("Acceso denegado");
                     return BadRequest(result);
-                }
+                    
                 return Ok(result);
             }
             List<string> errors = GetValidationErrors();

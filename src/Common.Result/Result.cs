@@ -6,6 +6,6 @@ namespace Common.Result
   {
     public bool Succeeded { get; set; }
     public T Content { get; set; }
-    public IList<string> Errors { get; set; }
+    public IList<string> Errors { get; set; } = new List<string>();
   }
 }

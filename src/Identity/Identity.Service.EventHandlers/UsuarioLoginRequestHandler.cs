@@ -38,16 +38,27 @@ namespace Identity.RequestHandlers
 
         public async Task<Result<IdentityAccess>> Handle(UsuarioLoginRequest request, CancellationToken cancellationToken)
         {
-            var result = new Result<IdentityAccess>() { Content = new IdentityAccess() };
+            var result = new Result<IdentityAccess>();
 
-            var user = await Context.Users.SingleAsync(x => x.UserName == request.UserName, cancellationToken: cancellationToken);
+            var user = await Context.Users.SingleOrDefaultAsync(x => x.UserName == request.UserName, cancellationToken: cancellationToken);
+
+            if (user == null)
+            {
+                result.Errors.Add("Usuario o contraseña incorrectos");
+                return result;
+            }
+
             var response = await SignInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
             result.Succeeded = response.Succeeded;
 
-            result.Content.AccessToken = response.Succeeded ?
-                await GenerateToken(user)
-                : "";
+            if (!response.Succeeded)
+            {
+                result.Errors.Add("Usuario o contraseña incorrectos");
+                return result;
+            }
+
+            result.Content = new IdentityAccess() { AccessToken = await GenerateToken(user) };
 
             return result;
         }

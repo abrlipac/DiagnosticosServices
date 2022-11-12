@@ -5,46 +5,16 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": ".NET Launch (Identity Api)",
-      "type": "coreclr",
+      "name": ".NET Core Launch (web)",
+      "type": "dotnetwatchattach",
       "request": "launch",
-      "preLaunchTask": "build Identity Api",
-      "program": "${workspaceFolder}/src/Backend/Identity/Identity.Api/bin/Debug/net6.0/Identity.Api.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}/src/Backend/Identity/Identity.Api",
-      "stopAtEntry": false,
-      "serverReadyAction": {
-        "action": "openExternally",
-        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-      },
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_URLS": "http://localhost:10003"
-      },
-      "sourceFileMap": {
-        "/Views": "${workspaceFolder}/Views"
-      }
-    },
-    {
-      "name": ".NET Launch (Diagnosticos Api)",
-      "type": "coreclr",
-      "request": "launch",
-      "preLaunchTask": "build Diagnosticos Api",
-      "program": "${workspaceFolder}/src/Backend/Diagnosticos/Diagnosticos.Api/bin/Debug/net6.0/Diagnosticos.Api.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}/src/Backend/Diagnosticos/Diagnosticos.Api",
-      "stopAtEntry": false,
-      "serverReadyAction": {
-        "action": "openExternally",
-        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-      },
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_URLS": "http://localhost:10002"
-      },
-      "sourceFileMap": {
-        "/Views": "${workspaceFolder}/Views"
+      "task": "watch",
+      "program": "${workspaceFolder}/src/Identity/Identity.Api/bin/Debug/net6.0/Identity.Api.dll",
+      "args": {
+        "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+        }
       }
     }
-  ],
+  ]
 }
