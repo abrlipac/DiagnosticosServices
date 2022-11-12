@@ -87,6 +87,7 @@ namespace Diagnosticos.Api
                     ValidateAudience = false
                 };
             });
+            services.AddApplicationInsightsTelemetry(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
         }
 
         // Este método es llamado por el tiempo de ejecución. Utilice este método para configurar la canalización de solicitudes HTTP.

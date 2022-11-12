@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <ApplicationInsightsResourceId>/subscriptions/33c43ff1-41b1-4496-8a6e-78a07f52d882/resourceGroups/diag-cll-rg/providers/microsoft.insights/components/diag-cll-diagnosticos-api</ApplicationInsightsResourceId>
+    <UserSecretsId>76c1b82b-d264-4ddc-a075-0b9d40a3c790</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
