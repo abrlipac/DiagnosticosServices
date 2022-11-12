@@ -17,6 +17,7 @@ using System.Text;
 using System;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 
 namespace Diagnosticos.Api
 {
@@ -87,7 +88,8 @@ namespace Diagnosticos.Api
                     ValidateAudience = false
                 };
             });
-            services.AddApplicationInsightsTelemetry(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
+
+            services.AddApplicationInsightsTelemetry();
         }
 
         // Este método es llamado por el tiempo de ejecución. Utilice este método para configurar la canalización de solicitudes HTTP.
