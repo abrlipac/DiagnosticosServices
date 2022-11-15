@@ -188,13 +188,13 @@ namespace Diagnosticos.RequestHandlers
             var prolog = new PrologEngine(persistentCommandHistory: false);
             var filename = "enfermedad.pl";
 
-            var productionPrologPath = Path.GetFullPath($"./pl/{filename}");
-            var localDevPrologPath = Path.GetFullPath($"./../Diagnosticos.RequestHandlers/{filename}");
-            var localTestingPrologPath = Path.GetFullPath($"./../../../../Diagnosticos.RequestHandlers/{filename}");
+            var productionPrologPath = Path.GetFullPath($"./../external/lib/{filename}");
+            var localDevPrologPath = Path.GetFullPath($"./../Diagnosticos.RequestHandlers/pl/{filename}");
+            var localTestingPrologPath = Path.GetFullPath($"./../../../../Diagnosticos.RequestHandlers/pl/{filename}");
 
             Logger.LogInformation($"! Cargando el archivo {productionPrologPath}");
 
-            var isRunningFromProduction = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "production";
+            var isRunningFromProduction = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production";
 
             var absolutePrologPath = isRunningFromProduction ? productionPrologPath
                 : !IsRunningFromUnitTest ? localDevPrologPath
