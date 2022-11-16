@@ -188,7 +188,7 @@ namespace Diagnosticos.RequestHandlers
             var prolog = new PrologEngine(persistentCommandHistory: false);
             var filename = "enfermedad.pl";
 
-            var productionPrologPath = Path.GetFullPath($"./../external/lib/{filename}");
+            var productionPrologPath = Path.GetFullPath($"./pl/{filename}");
             var localDevPrologPath = Path.GetFullPath($"./../Diagnosticos.RequestHandlers/pl/{filename}");
             var localTestingPrologPath = Path.GetFullPath($"./../../../../Diagnosticos.RequestHandlers/pl/{filename}");
 
