@@ -43,9 +43,9 @@ namespace Diagnosticos.RequestHandlers
         /// <param name="DiagnosticoCreateCommand">Este es el comando que se está manejando.</param> 
         /// <param name="CancellationToken">Este es un token que se puede utilizar para cancelarla 
         /// operación.</param> 
-    public async Task<DiagnosticoDto> Handle(DiagnosticoCreateCommand request, CancellationToken cancellationToken)
-    {
-      Logger.LogInformation("! Empezó la creación de un nuevo diagnóstico");
+        public async Task<DiagnosticoDto> Handle(DiagnosticoCreateCommand request, CancellationToken cancellationToken)
+        {
+            Logger.LogInformation("! Empezó la creación de un nuevo diagnóstico");
             var entry = new Diagnostico();
 
             // Empieza una transacción
@@ -64,16 +64,18 @@ namespace Diagnosticos.RequestHandlers
             }
             Logger.LogInformation("! Terminó la creación de un nuevo diagnóstico");
 
-            return new DiagnosticoDto {
+            return new DiagnosticoDto
+            {
                 Id = entry.Id,
                 Especialidad_Id = entry.Especialidad_Id,
                 Fecha = entry.Fecha,
-                PosiblesEnfermedades = entry.PosiblesEnfermedades.Select(pe => new PosibleEnfermedadDto {
+                PosiblesEnfermedades = entry.PosiblesEnfermedades.Select(pe => new PosibleEnfermedadDto
+                {
                     Enfermedad_Id = pe.Enfermedad_Id,
                     Porcentaje = pe.Porcentaje
                 }).ToList()
             };
-    }
+        }
 
         public async Task Handle(DiagnosticoUpdateCommand notification, CancellationToken cancellationToken)
         {
@@ -188,8 +190,7 @@ namespace Diagnosticos.RequestHandlers
             var prolog = new PrologEngine(persistentCommandHistory: false);
             var filename = "enfermedad.pl";
 
-            // var productionPrologPath = Path.GetFullPath($"./pl/{filename}");
-            var productionPrologPath = "https://raw.githubusercontent.com/abrlipac/DiagnosticosServices/master/src/Diagnosticos/Diagnosticos.RequestHandlers/pl/enfermedad.pl";
+            var productionPrologPath = Path.GetFullPath($"./pl/{filename}");
             var localDevPrologPath = Path.GetFullPath($"./../Diagnosticos.RequestHandlers/pl/{filename}");
             var localTestingPrologPath = Path.GetFullPath($"./../../../../Diagnosticos.RequestHandlers/pl/{filename}");
 
@@ -223,6 +224,9 @@ namespace Diagnosticos.RequestHandlers
                     .GetAllSolutions(absolutePrologPath, $"enfermedadde(Z, {pregunta.PalabraClave})")
                     .NextSolution;
 
+                if (solutions.Count() <= 0)
+                    throw new DiagnosticosDiagnosticoCreateCommandException($"No se encontró ninguna solución para la pregunta {pregunta.PalabraClave}.");
+
                 foreach (var solution in solutions)
                 {
                     var coincidencia = solution.NextVariable.First().Value;
@@ -243,8 +247,8 @@ namespace Diagnosticos.RequestHandlers
             return maxPorcentajes;
         }
 
-    // Clase de apoyo para guardar los resultados individuales temporalmente
-    public class EnfermedadDiagnostico
+        // Clase de apoyo para guardar los resultados individuales temporalmente
+        public class EnfermedadDiagnostico
         {
             public int Enfermedad_Id;
             public string Nombre;
